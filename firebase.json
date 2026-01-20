@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "your-site",
+    "site": "unframed-isolated",
     "public": "dist",
     "ignore": [
       "firebase.json",
