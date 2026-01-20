@@ -1,6 +1,6 @@
-# Sample IWA
+# Unframed Demo IWA
 
-<a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fedman%2Fsample-iwa">
+<a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fedman%2Funframed-demo">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
@@ -15,48 +15,33 @@
   </picture>
 </a>
 
-This is a sample app intended to be used as a base for developing demo IWAs.
+This is a demo IWA intended to exercise the `unframed` display mode feature.
 
-## Deploying the app
+## Installing the demo
 
-*   `pnpm run deploy` - builds and deploys the IWA.
+### Pre-requisites
 
-The first time you deploy the helper will prompt you to create a new site in
-Firebase Hosting, and will set it up in the code for you.
+* You need a ChromeOS device.
+* Navigate to `chrome://flags`.
+* Enable the `#enable-isolated-web-app-dev-mode` feature flag.
+* Enable the `#enable-unframed-iwa` feature flag.
 
-This deploys a static site that you can browse as a normal website or install as
-an IWA "Dev Mode Proxy" at `https://your-site.web.app`.
+### Option 1: Install via update manifest
 
-## Releasing IWA bundles
-
-*   `pnpm run build:release` - creates a new signed bundle for the IWA in
-    `./releases`.
-*   (optional) `pnpm run deploy` - deploy the IWA and the new bundle.
-
-This also updates `./releases/update_manifest.json`.
-
-## Installing the IWA
-
-### Via dev mode proxy
-
-*   (optional) Deploy the static files with `pnpm run deploy`
-*   Navigate to `chrome://web-app-internals`
-*   Find "Install IWA via Dev Mode Proxy"
-*   Paste in the the addresss to your site `https://your-site.web.app`
-
-### Via update manifest
-
-*   (optional) Generate a new release bundle with `pnpm run build:release`
-*   (optional) Deploy the bundle with `pnpm run deploy`
 *   Navigate to `chrome://web-app-internals`
 *   Find "Install IWA from Update Manifest"
-*   Paste in the the addresss to your manifest
-    `https://your-site.web.app/releases/update_manifest.json`
+*   Paste in the the addresss 
+    `https://unframed-isolated.web.app/releases/update_manifest.json`
+*   Click "fetch" and "install"
 
-## How is the IWA signed?
+### Option 2: Install via dev mode proxy
 
-When you first open this project in Firebase Studio, the `create-dot-env` hook
-in `.idx/dev.nix` generates a `.env` file.
+*   Navigate to `chrome://web-app-internals`
+*   Find "Install IWA via Dev Mode Proxy"
+*   Paste in the the addresss `https://unframed-isolated.web.app`
+*   Click "install"
 
-This `.env` includes the `SIGNING_KEY` used to sign the output IWA bundle.
-Remember to keep this key somewhere safe as it uniquely identifies your IWA.
+## Building and deploying the demo
+
+*   `pnpm run build:release` - creates a new versioned signed bundle for the IWA in `./releases` and updates the manifest.
+*   `pnpm run deploy` - builds and deploys the IWA to `https://unframed-isolated.web.app`.

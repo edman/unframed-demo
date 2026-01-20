@@ -2,10 +2,23 @@
   "id": "/",
   "scope": "/",
   "start_url": "/",
-  "name": "Sample IWA",
+  "name": "Unframed Demo IWA",
   "version": "0.0.0",
   "display": "standalone",
+  "display_override": [
+    {
+      "display": "unframed",
+      "url_patterns": [
+        {
+          "pathname": "/unframed/*"
+        }
+      ]
+    }
+  ],
   "permissions_policy": {
+    "window-management": [
+      "self"
+    ],
     "cross-origin-isolated": [
       "self"
     ]

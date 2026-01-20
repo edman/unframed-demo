@@ -1,18 +1,26 @@
+declare global {
+  interface Window {
+    getScreenDetails: () => void;
+  }
+}
 
-const countElement = document.querySelector<HTMLSpanElement>('#count')!;
+const id = <T extends HTMLElement>(id: string) => document.getElementById(id)!! as T;
 
-const currentCount = () => Number(countElement.textContent);
-const updateCount = (count: number) =>
-  (countElement.textContent = count.toString())
+function onPermissionChanged({ state }: { state: string }) {
+  id("permission-state").innerText = state;
+  id<HTMLButtonElement>("permission-prompt").disabled = state !== "prompt";
+}
 
-document.querySelector<HTMLButtonElement>('#increment')!.addEventListener('click', () => {
-  updateCount(currentCount() + 1);
-});
+document.addEventListener("DOMContentLoaded", () => {
+  id("permission-prompt").addEventListener("click", () =>
+    window.getScreenDetails(),
+  );
 
-document.querySelector<HTMLButtonElement>('#decrement')!.addEventListener('click', () => {
-  updateCount(currentCount() - 1);
-});
+  navigator.permissions.query({ name: "window-management" as any}).then((status) => {
+    id("loading").classList.add("hidden");
+    onPermissionChanged(status);
+    status.onchange = () => onPermissionChanged(status);
+  });
 
-document.querySelector<HTMLButtonElement>('#reset')!.addEventListener('click', () => {
-  updateCount(0);
+  id("close-window-button").addEventListener("click", () => window.close());
 });

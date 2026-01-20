@@ -16,26 +16,42 @@ limitations under the License.
 
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/style.css" />
-    <script type="module" defer src="/index.ts"></script>
-    <link rel="manifest" href="/.well-known/manifest.webmanifest" />
-  </head>
 
-  <body>
-    <main class="container">
-      <h2>Sample IWA</h2>
-      <article>
-        <h4 style="text-align: center;">
-          Counter: <span id="count">0</span>
-        </h4>
-        <div role="group">
-          <button id="decrement" class="secondary">-</button>
-          <button id="increment">+</button>
-          <button id="reset" class="contrast">Reset</button>
-        </div>
-      </article>
-    </main>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="module" defer src="/index.ts"></script>
+  <link rel="manifest" href="/.well-known/manifest.webmanifest" />
+</head>
+
+<body>
+  <main class="container">
+    <div><progress id="loading" /></div>
+    <h2 class="draggable">Unframed IWA Demo</h2>
+    <h4>Path: /</h4>
+    <p>
+      This window <span class="bold">is</span>
+      <span class="hidden-in-unframed bold">not</span> unframed
+    </p>
+    <p>
+      Window management permission state:
+      <span id="permission-state" class="bold">UNKNOWNS</span>
+    </p>
+    <button id="permission-prompt">Prompt permission</button>
+    <p style="margin-top: 1rem">
+      When the permission is granted, the button below opens an unframed
+      window.
+    </p>
+    <a role="button" href="/unframed/window.html" target="_blank">
+      Open window
+    </a>
+    <p style="margin-top: 2rem"></p>
+    <a role="button" href="/unframed/window.html">
+      Navigate to /unframed/window
+    </a>
+    <p style="margin-top: 2rem"></p>
+    <button id="close-window-button">Close this window</button>
+  </main>
+</body>
+
 </html>

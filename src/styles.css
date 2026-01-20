@@ -14,5 +14,30 @@
  * limitations under the License.
  */
 
- /* Pico CSS styles the site based just on semantic HTML. */
- @import "@picocss/pico/css/pico.css";
+@import "@picocss/pico/css/pico.css";
+
+.bold {
+  font-weight: bold;
+}
+
+.hidden-in-unframed {
+  display: inline;
+}
+
+@media (display-mode: borderless) {
+  .hidden-in-unframed {
+    display: none;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0s 2s,
+    opacity 2s ease-in-out;
+}
+
+.draggable {
+  app-region: drag;
+}
