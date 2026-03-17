@@ -17,13 +17,26 @@
 
 This is a demo IWA intended to exercise the `unframed` display mode feature.
 
+## Introduction
+
+The unframed display mode feature for IWAs in ChromeOS makes it possible for apps to display windows without a window "frame" surrounding the app content, giving IWA developers full control of the content of app windows.
+
+Here is what an example app window normally looks like:
+
+![Example regular app window](./docs/example-non-unframed-window.png)
+
+And here is what the same app looks like when it is unframed:
+
+![Example unframed app window](./docs/example-unframed-window.png)
+
 ## Installing the demo
 
 ### Pre-requisites
 
 * You need a ChromeOS device.
+* You need Chrome version **146.0.7648.0 or later**.
 * Navigate to `chrome://flags`.
-* Enable the `#enable-isolated-web-app-dev-mode` feature flag.
+* Enable the `#enable-isolated-web-app-dev-mode` feature flag to install IWAs.
 * Enable the `#enable-unframed-iwa` feature flag.
 
 ### Option 1: Install via update manifest
